@@ -56,7 +56,12 @@ storiesOf("VictoryChart.domainPadding", module)
     </VictoryChart>
   ));
 
-storiesOf("VictoryChart.domain", module)
+storiesOf("VictoryChart.domain.bar", module)
+  .add("default", () => (
+    <VictoryChart>
+      <VictoryBar data={getData(5)} />
+    </VictoryChart>
+  ))
   .add("array domain", () => (
     <VictoryChart domain={[0, 10]}>
       <VictoryBar data={getData(5)} />
@@ -76,7 +81,76 @@ storiesOf("VictoryChart.domain", module)
     <VictoryChart domain={{ x: [0, 6], y: [0, 10] }}>
       <VictoryBar horizontal data={getData(5)} />
     </VictoryChart>
-  ));
+  ))
+  .add("object minDomain x clipping", () => (
+    <VictoryChart minDomain={{ x: 2 }} maxDomain={{ x: 20 }}>
+      <VictoryBar data={getData(5)} />
+    </VictoryChart>
+  ))
+
+  storiesOf("VictoryChart.domain.line", module)
+    .add("default", () => (
+      <VictoryChart>
+        <VictoryLine data={getData(5)} />
+      </VictoryChart>
+    ))
+    .add("array domain", () => (
+      <VictoryChart domain={[0, 10]}>
+        <VictoryLine data={getData(5)} />
+      </VictoryChart>
+    ))
+    .add("array domain (horizontal)", () => (
+      <VictoryChart domain={[0, 10]}>
+        <VictoryLine horizontal data={getData(5)} />
+      </VictoryChart>
+    ))
+    .add("object domain", () => (
+      <VictoryChart domain={{ x: [0, 6], y: [0, 10] }}>
+        <VictoryLine data={getData(5)} />
+      </VictoryChart>
+    ))
+    .add("object domain (horizontal)", () => (
+      <VictoryChart domain={{ x: [0, 6], y: [0, 10] }}>
+        <VictoryLine horizontal data={getData(5)} />
+      </VictoryChart>
+    ))
+    .add("object minDomain x clipping", () => (
+      <VictoryChart minDomain={{ x: 2 }} maxDomain={{ x: 20 }}>
+        <VictoryLine data={getData(5)} />
+      </VictoryChart>
+    ));
+
+  storiesOf("VictoryChart.domain.scatter", module)
+    .add("default", () => (
+      <VictoryChart>
+        <VictoryScatter data={getData(5)} />
+      </VictoryChart>
+    ))
+    .add("array domain", () => (
+      <VictoryChart domain={[0, 10]}>
+        <VictoryScatter data={getData(5)} />
+      </VictoryChart>
+    ))
+    .add("array domain (horizontal)", () => (
+      <VictoryChart domain={[0, 10]}>
+        <VictoryScatter horizontal data={getData(5)} />
+      </VictoryChart>
+    ))
+    .add("object domain", () => (
+      <VictoryChart domain={{ x: [0, 6], y: [0, 10] }}>
+        <VictoryScatter data={getData(5)} />
+      </VictoryChart>
+    ))
+    .add("object domain (horizontal)", () => (
+      <VictoryChart domain={{ x: [0, 6], y: [0, 10] }}>
+        <VictoryScatter horizontal data={getData(5)} />
+      </VictoryChart>
+    ))
+    .add("object minDomain x clipping", () => (
+      <VictoryChart minDomain={{ x: 2 }} maxDomain={{ x: 20 }}>
+        <VictoryScatter data={getData(5)} />
+      </VictoryChart>
+    ));
 
 storiesOf("VictoryChart.calculated domain", module)
   .add("from data", () => (
