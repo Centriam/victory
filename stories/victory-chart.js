@@ -7,7 +7,7 @@ import { VictoryBar } from "../packages/victory-bar/src/index";
 import { VictoryScatter } from "../packages/victory-scatter/src/index";
 import { VictoryLine } from "../packages/victory-line/src/index";
 import { VictoryBoxPlot } from "../packages/victory-box-plot/src/index";
-import { VictoryTheme } from "../packages/victory-core/src/index";
+import { VictoryClipContainer, VictoryTheme } from "../packages/victory-core/src/index";
 import { getData, getFourQuadrantData, getArrayData } from "./data";
 
 storiesOf("VictoryChart", module).add("default rendering", () => <VictoryChart />);
@@ -148,7 +148,25 @@ storiesOf("VictoryChart.domain.bar", module)
     ))
     .add("object minDomain x clipping", () => (
       <VictoryChart minDomain={{ x: 2 }} maxDomain={{ x: 20 }}>
-        <VictoryScatter data={getData(5)} />
+        <VictoryScatter
+          data={getData(5)}
+        />
+      </VictoryChart>
+    ))
+    .add("object minDomain x clipping container", () => (
+      <VictoryChart minDomain={{ x: 2 }} maxDomain={{ x: 20 }}>
+        <VictoryScatter
+          groupComponent={<VictoryClipContainer/>}
+          data={getData(5)}
+        />
+      </VictoryChart>
+    ))
+    .add("object minDomain x clipping container with padding", () => (
+      <VictoryChart minDomain={{ x: 2 }} maxDomain={{ x: 20 }}>
+        <VictoryScatter
+          groupComponent={<VictoryClipContainer clipPadding={{ top: 10, bottom: 10, left: 10, right: 10 }}/>}
+          data={getData(5)}
+        />
       </VictoryChart>
     ));
 
